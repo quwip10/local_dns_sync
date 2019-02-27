@@ -1,19 +1,24 @@
 #!/bin/bash
+until [ $continue == "n" ];
+do
+  printf "System Name: "
+  read name
 
-printf "System Name: "
-read name
+  printf "Domain: "
+  read domain
 
-printf "Domain: "
-read domain
+  printf "IP: "
+  read ip
 
-printf "IP: "
-read ip
+  printf "Comment: "
+  read comment
 
-printf "Comment: "
-read comment
-
-printf "\n#$comment \n" >> /etc/pihole/test_file
-printf "$ip $name.$domain $name \n" >> /etc/pihole/test_file
+  printf "\n#$comment \n" >> /etc/pihole/test_file
+  printf "$ip $name.$domain $name \n" >> /etc/pihole/test_file
+  
+  printf "Add another? (y/n): "
+  read continue
+done
 
 pihole restartdns
 
