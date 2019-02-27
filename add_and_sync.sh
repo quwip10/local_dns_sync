@@ -7,13 +7,13 @@ domain="domain.com"
 ip="555.555.555.555"
 comment="none"
 
+printf "Domain: "
+read domain
+
 until [ $continue == "n" ];
 do
   printf "System Name: "
   read name
-
-  printf "Domain: "
-  read domain
 
   printf "IP: "
   read ip
