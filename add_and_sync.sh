@@ -1,6 +1,6 @@
 #!/bin/bash
 
-printf "Name: "
+printf "System Name: "
 read name
 
 printf "Domain: "
