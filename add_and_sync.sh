@@ -7,6 +7,14 @@ domain="domain.com"
 ip="555.555.555.555"
 comment="none"
 
+#check for first run pihole config in dnsmasq.d
+if grep -q addn-hosts=/etc/pihole/lan.list /etc/dnsmasq.d/02-lan.conf;
+then
+	printf "Not first run \n"
+else
+	printf "First RUN! \n"
+fi
+
 #Check if secondary DNS file exists
 if [ -f ./secondaryDNS ];
 then
