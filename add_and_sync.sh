@@ -1,4 +1,12 @@
 #!/bin/bash
+
+#Global Variable Declarations
+continue="y"
+name="system"
+domain="domain.com"
+ip="555.555.555.555"
+comment="none"
+
 until [ $continue == "n" ];
 do
   printf "System Name: "
