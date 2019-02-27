@@ -1,5 +1,5 @@
 # local_dns_sync
-The primary file for this project is add_and_sync.sh \n
+The primary file for this project is add_and_sync.sh
 Copy this file to your pihole (preferably in /etc/pihole/)
 Make executable if necessary (chmod +x /etc/pihole/add_and_sync.sh)
 Run with sudo (sudo /etc/pihole/add_and_sync.sh)
