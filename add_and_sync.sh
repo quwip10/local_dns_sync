@@ -33,7 +33,7 @@ else
 	fi
 fi
 
-printf "Domain: "
+printf "Domain (example: mydomain.com): "
 read domain
 
 until [ $continue == "n" ];
