@@ -30,6 +30,6 @@ done
 
 pihole restartdns
 
-/usr/bin/rsync etc/pihole/lan.list atlasalex@pihole2:/etc/pihole/lan.list
+/usr/bin/rsync /etc/pihole/lan.list atlasalex@pihole2:/etc/pihole/lan.list
 
 ssh -t atlasalex@pihole2 'pihole restartdns'
