@@ -17,6 +17,6 @@ printf "$ip $name.$domain $name \n" >> /etc/pihole/test_file
 
 pihole restartdns
 
-/usr/bin/rsync ./lan.list atlasalex@pihole2:/etc/pihole/lan.list
+/usr/bin/rsync etc/pihole/lan.list atlasalex@pihole2:/etc/pihole/lan.list
 
 ssh -t atlasalex@pihole2 'pihole restartdns'
