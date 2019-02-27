@@ -18,4 +18,5 @@ You can then add all of your local systems and reference them by DNS. (The scrip
 NOTE: This requires that your router points to your pihole for DNS.
 
 The first time I set this up on my network I manually did it following this tutorial: 
+
 https://discourse.pi-hole.net/t/howto-using-pi-hole-as-lan-dns-server/533 
