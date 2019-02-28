@@ -29,7 +29,7 @@ then
 	then
 		printf "\n***Loaded secondary DNS IP from file!***\n"
 		printf "IP: $secondary_IP \n"
-		sleep 3
+		sleep 2
 	fi
 else
 	printf "Do you have a secondary, local, DNS server (another pihole)? (y/n) "
@@ -59,8 +59,8 @@ do
   printf "Comment: "
   read comment
 
-  printf "\n#$comment \n" >> /etc/pihole/lan.list
-  printf "$ip $name.$domain $name \n" >> /etc/pihole/lan.list
+#  printf "\n#$comment \n" >> /etc/pihole/lan.list
+#  printf "$ip $name.$domain $name \n" >> /etc/pihole/lan.list
   
   printf "Add another? (y/n): "
   read continue
@@ -69,14 +69,30 @@ done
 #Below commands used to sync lan.list to secondary pihole
 #and restart both dns services
 
-#****NOTE $username is not defined yet********
 
 #Restart pihole DNS Service for changes to take affect.
+
 pihole restartdns
 
-#/usr/bin/rsync /etc/pihole/lan.list "$username"@"$secondary_IP":/etc/pihole/lan.list
+if [ -n $secondary_IP ];
+then
+	printf "\nDo you want to sync lan.list to your secondary server? "
+	printf "IP: $secondary_IP (y/n): "
+	read syncme
 
-#ssh -t "$username"@"$secondary_IP" 'pihole restartdns'
+	if [ $syncme == "y" ];
+	then
+		printf "\nEnter username for secondary server: "
+		read username
+
+		printf "\nYou may be prompted for your password up to three times.\n"
+		sleep 1
+		
+		#Below lines sync lan.list and then remote restart DNS
+		/usr/bin/rsync /etc/pihole/lan.list "$username"@"$secondary_IP":/etc/pihole/lan.list
+		ssh -t "$username"@"$secondary_IP" 'pihole restartdns'
+	fi
+fi
 
 
 
