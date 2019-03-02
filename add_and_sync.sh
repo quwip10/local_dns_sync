@@ -1,5 +1,6 @@
 #!/bin/bash
-
+#Copyright (c) 2019 Copyright Holder All Rights Reserved.
+#This product comes with absolutely no warranty
 #Global Variable Declarations
 continue="y"
 name="system"
@@ -23,7 +24,6 @@ fi
 if [ -f ./secondaryDNS ];
 then
 	read -r secondary_IP<./secondaryDNS
-	
 	#Check if size is greater than zero then load the IP
 	if [ -s ./secondaryDNS ];
 	then
@@ -61,7 +61,7 @@ do
 
 #  printf "\n#$comment \n" >> /etc/pihole/lan.list
 #  printf "$ip $name.$domain $name \n" >> /etc/pihole/lan.list
-  
+
   printf "Add another? (y/n): "
   read continue
 done
@@ -87,12 +87,9 @@ then
 
 		printf "\nYou may be prompted for your password up to three times.\n"
 		sleep 1
-		
+
 		#Below lines sync lan.list and then remote restart DNS
 		/usr/bin/rsync /etc/pihole/lan.list "$username"@"$secondary_IP":/etc/pihole/lan.list
 		ssh -t "$username"@"$secondary_IP" 'pihole restartdns'
 	fi
 fi
-
-
-
