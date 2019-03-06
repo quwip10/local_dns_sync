@@ -59,8 +59,8 @@ do
   printf "Comment: "
   read comment
 
-#  printf "\n#$comment \n" >> /etc/pihole/lan.list
-#  printf "$ip $name.$domain $name \n" >> /etc/pihole/lan.list
+  printf "\n#$comment \n" >> /etc/pihole/lan.list
+	printf "$ip $name.$domain $name \n" >> /etc/pihole/lan.list
 
   printf "Add another? (y/n): "
   read continue
